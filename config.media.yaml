@@ -1,0 +1,47 @@
+plex:
+  url: "<YOUR PLEX URI>"
+  token: "<YOUR PLEX TOKEN>"
+  movie_sections: ["Movies"]        # names as they appear in Plex
+  show_sections: ["TV Shows"]
+
+# Choose which sources you want:
+sources:
+sources:
+  imdb_top250_movies: true
+  imdb_top250_tv: true
+  trakt:
+    client_id: "<YOUR TRAKT API>"
+    user_lists:
+      - { user: "justin", slug: "imdb-top-rated-movies", type: "movies" }
+      - { user: "justin", slug: "imdb-top-rated-tv-shows", type: "shows" } #add any you see fit
+
+radarr:
+  enabled: false
+  url: "http://YOUR_RADARR:7878"
+  api_key: "RADARR_API_KEY"
+  root_folder_path: "/data/movies"
+  quality_profile_id: 1
+  monitored: true
+  search_for_movie: true
+
+sonarr:
+  enabled: false
+  url: "http://YOUR_SONARR:8989"
+  api_key: "SONARR_API_KEY"
+  root_folder_path: "/data/tv"
+  quality_profile_id: 1
+  language_profile_id: 1          # Sonarr v4 only; remove or set if v3
+  monitored: true
+  search_for_missing_episodes: true
+  series_type: "standard"         # standard | anime | daily
+
+# Matching behavior
+matching:
+  fuzzy_threshold: 90    # 0-100; raise to be stricter
+  prefer_ids: true       # match with IMDb/TVDB/TMDb first
+
+# Output
+output:
+  dir: "./out"
+  write_csv: true
+  write_markdown: true
